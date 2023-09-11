@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/16f454e3-5c00-4c69-8cc1-88b8dd725ba5/resourceGroups/RG1/providers/Microsoft.Web/sites/SuperMartClient",
+    "appService.deploySubpath": "dist\\demo1"
+}

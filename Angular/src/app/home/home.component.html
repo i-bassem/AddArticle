@@ -1,0 +1,95 @@
+<div class="container-fluid">
+
+
+  <!-- Login -->
+  <h3>press the login button to get a token to be able to use the APIs</h3>
+  <div class="text-center">
+<button class="btn btn-success text-center flot-center" (click)="login()">Login</button>
+</div>
+
+
+<!-- Article list -->
+<h3 class="text-center">Articles Cards</h3>
+<div class="text-center">
+<button class="btn btn-success" (click)="getAllArticles()">View It</button>
+</div>
+  <p-card header={{article.title}} subheader= {{article.publishedBy}}&nbsp;{{article.updatedAt|date}}  *ngFor="let article of articles; let x=index" [style]="{ width: '360px' }">
+    <ng-template pTemplate="header">
+        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+    </ng-template>
+    <p>
+       {{article.content}}
+    </p>
+    <ng-template pTemplate="footer"> 
+    </ng-template>
+</p-card>
+
+
+<!-- addArticle -->
+
+
+<div class="registration-form">
+
+  <h3 class="font-weight-bold text-center ">Create Article</h3>
+   
+           <!-- Incorrect password or email  style="border: 2px solid red;"-->
+       <div class="text-danger"  [hidden]=" articleAddForm.untouched">
+           <small>{{validationErrors}}</small>
+       </div>
+
+  <form   [formGroup]="articleAddForm" (ngSubmit)="addArticle()">
+
+       <!-- id  -->
+      <div class="form-group">
+          <input type="text" class="form-control item" id="id" placeholder="id" formControlName="id" 
+          [class.is-valid]="id?.valid">
+      </div>
+      <div class="alert alert-danger" [hidden]="id?.valid || id?.untouched">
+           <small *ngIf=" id?.errors?.['required']"> This field is required </small> 
+      </div>
+      <!-- title -->
+      <div class="form-group">
+        <input type="text" class="form-control item" id="title" placeholder="title" formControlName="title" 
+        [class.is-valid]="title?.valid">
+    </div>
+    <div class="alert alert-danger" [hidden]="title?.valid || title?.untouched">
+         <small *ngIf=" title?.errors?.['required']"> This field is required </small> 
+    </div>
+      <!-- content -->
+      <div class="form-group">
+        <input type="text" class="form-control item" id="content" placeholder="content" formControlName="content" 
+        [class.is-valid]="content?.valid">
+    </div>
+    <div class="alert alert-danger" [hidden]="content?.valid || content?.untouched">
+         <small *ngIf=" content?.errors?.['required']"> This field is required </small> 
+    </div>
+      <!-- updatedAt -->
+      <div class="form-group">
+        <input type="text" class="form-control item" id="updatedAt" placeholder="updatedAt" formControlName="updatedAt" 
+        [class.is-valid]="updatedAt?.valid">
+    </div>
+    <div class="alert alert-danger" [hidden]="updatedAt?.valid || updatedAt?.untouched">
+         <small *ngIf=" updatedAt?.errors?.['required']"> This field is required </small> 
+    </div>
+      <!-- publishedBy -->
+      <div class="form-group">
+        <input type="text" class="form-control item" id="publishedBy" placeholder="publishedBy" formControlName="publishedBy" 
+        [class.is-valid]="publishedBy?.valid">
+    </div>
+    <div class="alert alert-danger" [hidden]="publishedBy?.valid || publishedBy?.untouched">
+         <small *ngIf=" publishedBy?.errors?.['required']"> This field is required </small> 
+    </div>
+    <div class="text-center">
+    <button class="btn btn-success" type="submit">Submit</button>
+    </div>
+    </form>
+</div>
+
+</div>
+
+
+
+
+
+  
+    
